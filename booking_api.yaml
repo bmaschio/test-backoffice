@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: hello-world-test-balint
-  description: TestBalint
+  name: Booking API
+  description: Booking API for Booking Service
 spec:
   type: asyncapi
   lifecycle: production
