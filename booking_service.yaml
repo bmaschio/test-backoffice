@@ -8,6 +8,8 @@ spec:
   type: service
   lifecycle: production
   owner: team-c
+  dependsOn:
+    - resource:default/booking-db
   providesApis:
     - BookingAPI
   consumesApis:
