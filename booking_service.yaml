@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bookingService
+  # This is an extra long description
+  description: It allows to book a room
+spec:
+  type: service
+  lifecycle: production
+  owner: team-c
+  providesApis:
+    - BookingAPI
