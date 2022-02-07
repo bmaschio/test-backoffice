@@ -12,5 +12,5 @@ spec:
   owner: team-c
   providesApis:
     - BookingAPI
-  consumesApi:
+  consumesApis:
     - RoomsAPI  
