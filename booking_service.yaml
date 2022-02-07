@@ -4,6 +4,8 @@ metadata:
   name: bookingService
   # This is an extra long description
   description: It allows to book a room
+tags:
+    - java 
 spec:
   type: service
   lifecycle: production
