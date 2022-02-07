@@ -1,0 +1,258 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: hello-world-test-balint
+  description: TestBalint
+spec:
+  type: asyncapi
+  lifecycle: production
+  owner: team-c
+  definition: | 
+      asyncapi: "2.0.0"
+      info:
+        description: "Booking"
+        version: "1.0.0"
+        title: "Swagger Booking"
+      host: "localhost:8080"
+
+      schemes:
+        - "https"
+        - "http"
+
+      tags:
+        - name: booking
+          description: Everything about Booking
+
+      paths:
+        /booking:
+          get:
+            tags:
+              - booking
+            summary: "Find Booking"
+            description: ""
+            operationId: "findAllBooking"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "successful operation"
+                schema:
+                  type: "array"
+                  items:
+                    $ref: "#/definitions/Booking"
+          post:
+            tags:
+              - booking
+            summary: "Add a new booking"
+            description: ""
+            operationId: "addBooking"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "BookingRequest"
+                in: "body"
+                schema:
+                  $ref: "#/definitions/BookingRequest"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "Ok"
+                schema:
+                  type: "integer"
+          delete:
+            tags:
+              - booking
+            summary: "Deletes all Booking"
+            description: ""
+            operationId: "deleteAllBooking"
+            consumes:
+              - "application/json"
+            responses:
+              "200":
+                description: "Ok"
+        /booking/{bookingId}:
+          get:
+            tags:
+              - booking
+            summary: "Find Booking by ID"
+            description: ""
+            operationId: "findBooking"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "bookingId"
+                in: "path"
+                description: "ID booking"
+                required: true
+                type: "integer"
+                format: "int64"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "successful operation"
+                schema:
+                  $ref: "#/definitions/Booking"
+          put:
+            tags:
+              - booking
+            summary: "Update an existing booking"
+            description: ""
+            operationId: "updateBooking"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "bookingId"
+                in: "path"
+                description: "ID booking"
+                required: true
+                type: "integer"
+                format: "int64"
+              - name: "Booking"
+                in: "body"
+                schema:
+                  $ref: "#/definitions/Booking"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "Ok"
+          delete:
+            tags:
+              - booking
+            summary: "Deletes a Booking"
+            description: ""
+            operationId: "deleteBooking"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "bookingId"
+                in: "path"
+                description: "ID di un booking"
+                required: true
+                type: "integer"
+                format: "int64"
+            responses:
+              "200":
+                description: "Ok"
+        /booking/allBookingForUser:
+          get:
+            tags:
+              - booking
+            summary: "Find Appointment for user"
+            description: ""
+            operationId: "allBookingForUser"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "userId"
+                in: "query"
+                description: "ID user"
+                required: true
+                type: "integer"
+                format: "int64"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "successful operation"
+                schema:
+                  type: "array"
+                  items:
+                    $ref: "#/definitions/Booking"
+        /booking/allBookingForMeetingRoom:
+          get:
+            tags:
+              - booking
+            summary: "Find Booking by ID"
+            description: ""
+            operationId: "allBookingForMeetingRoom"
+            consumes:
+              - "application/json"
+            parameters:
+              - name: "meetingRoomId"
+                in: "query"
+                description: "ID meeting Room"
+                required: true
+                type: "integer"
+                format: "int64"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "successful operation"
+                schema:
+                  type: "array"
+                  items:
+                    $ref: "#/definitions/Booking"
+        /booking/allBookingOnDates:
+          get:
+            tags:
+              - booking
+            summary: "Find all booking on dates"
+            description: ""
+            operationId: "allBookingOnDates"
+            consumes:
+              - "application/json"
+            parameters:
+              - in: "query"
+                name: "startDate"
+                type: "string"
+                description: "start date for booking"
+              - in: "query"
+                name: "endDate"
+                type: "string"
+                description: "end date for booking"
+            produces:
+              - "application/json"
+            responses:
+              "200":
+                description: "successful operation"
+                schema:
+                  type: "array"
+                  items:
+                    $ref: "#/definitions/Booking"
+      definitions:
+        Booking:
+          type: "object"
+          required:
+            - roomName
+            - occupants
+            - userName
+            - startDate
+            - endDate
+          properties:
+            id:
+              type: "integer"
+              format: "int64"
+            userId:
+              type: "integer"
+              format: "int64"
+            meetingRoomId:
+              type: "integer"
+              format: "int64"
+            startDate:
+              type: "string"
+            endDate:
+              type: "string"
+        BookingRequest:
+          type: "object"
+          required:
+            - roomName
+            - occupants
+            - userName
+            - startDate
+            - endDate
+          properties:
+            roomName:
+              type: "string"
+            occupants:
+              type: "integer"
+              format: "int64"
+            userName:
+              type: "string"
+            startDate:
+              type: "string"
+            endDate:
+              type: "string"
