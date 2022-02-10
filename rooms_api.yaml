@@ -4,11 +4,11 @@ metadata:
   name: RoomsAPI
   description: Room API
 spec:
-  type: asyncapi
+  type: openapi
   lifecycle: production
   owner: team-c
   definition: | 
-      asyncapi: "2.0.0"
+      openapi: "2.0.0"
       info:
         description: "Meeting Room"
         version: "1.0.0"
