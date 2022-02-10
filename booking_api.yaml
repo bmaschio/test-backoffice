@@ -4,11 +4,11 @@ metadata:
   name: BookingAPI
   description: Booking API for Booking Service
 spec:
-  type: asyncapi
+  type: openapi
   lifecycle: production
   owner: team-c
   definition: | 
-      asyncapi: "2.0.0"
+      swagger: "2.0.0"
       info:
         description: "Booking"
         version: "1.0.0"
