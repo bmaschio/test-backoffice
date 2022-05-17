@@ -10,6 +10,7 @@ spec:
   owner: team-c
   dependsOn:
     - resource:booking-db
+    - resource:bse-arch
   providesApis:
     - BookingAPI
   consumesApis:
