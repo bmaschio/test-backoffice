@@ -4,6 +4,8 @@ metadata:
   name: roomsService
   # This is an extra long description
   description: It allows to book a room
+  annotations:
+    backstage.io/techdocs-ref: value
 spec:
   type: service
   lifecycle: production
