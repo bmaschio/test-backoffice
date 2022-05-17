@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: bse-arch
+  description: Stores artist details
+spec:
+  type: library
+  owner: team-a
