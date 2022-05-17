@@ -5,7 +5,7 @@ metadata:
   # This is an extra long description
   description: It allows to book a room
   annotations:
-    backstage.io/techdocs-ref: value
+    backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master
 spec:
   type: service
   lifecycle: production
